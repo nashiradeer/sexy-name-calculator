@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sexy Name Calculator</title>
+
+        <style type="text/css">
+            html {
+                height: 100%;
+                width: 100%;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            main {
+                text-align: center;
+            }
+        </style>
+
+
+        <script type="text/javascript">
+            function getCharSexyValue(char) {
+                switch(char) {
+                    case "a": return 100;
+                    case "b": return 14;
+                    case "c": return 9;
+                    case "d": return 28;
+                    case "e": return 145;
+                    case "f": return 12;
+                    case "g": return 3;
+                    case "h": return 10;
+                    case "i": return 200;
+                    case "j": return 100;
+                    case "k": return 114;
+                    case "l": return 100;
+                    case "m": return 25;
+                    case "n": return 450;
+                    case "o": return 80;
+                    case "p": return 2;
+                    case "q": return 12;
+                    case "r": return 400;
+                    case "s": return 113;
+                    case "t": return 405;
+                    case "u": return 11;
+                    case "v": return 10;
+                    case "w": return 10;
+                    case "x": return 3;
+                    case "y": return 210;
+                    case "z": return 23;
+                    default: return 0;
+                }
+            }
+
+            function calculateSexyValue(name) {
+                var sexyName = name.toLowerCase();
+                var value = 0;
+                for(var i = 0;i < sexyName.length;i++) {
+                    value += getCharSexyValue(sexyName.charAt(i));
+                }
+                return value;
+            }
+
+            function getSexyDescription(value) {
+                if (value <= 60) return "NOT TOO SEXY";
+                else if (value <= 300) return "PRETTY SEXY";
+                else if (value <= 599) return "VERY SEXY";
+                return "THE ULTIMATE SEXIEST";
+            }
+
+            function updateSexyValue(value)
+            {
+                document.getElementById("value").innerHTML = value;
+            }
+
+            function updateSexyDesc(value)
+            {
+                document.getElementById("desc").innerHTML = getSexyDescription(value);
+            }
+
+            function registerEvents() {
+                document.getElementById("name").oninput = function () {
+                    var value = calculateSexyValue(document.getElementById("name").value);
+                    updateSexyValue(value);
+                    updateSexyDesc(value);
+                }
+            }
+        </script>
+    </head>
+    <body onload="registerEvents();">
+        <main>
+            <input type="text" id="name" name="Your name"><br>
+            <a id="value">0</a><br>
+            <a id="desc">NOT TOO SEXY</a>
+        </main>
+    </body>
+</html>
